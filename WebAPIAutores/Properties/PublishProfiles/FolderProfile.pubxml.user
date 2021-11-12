@@ -4,7 +4,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_PublishTargetUrl>F:\WebAPI Login\WebAPIAutores\bin\Release\net5.0\publish\</_PublishTargetUrl>
-    <History>True|2021-11-11T20:19:52.7999806Z;True|2021-11-11T17:19:43.0753487-03:00;True|2021-11-11T16:44:35.9585558-03:00;</History>
+    <_PublishTargetUrl>F:\Proyecto Calle Larga\WebAPI Login\WebAPIAutores\bin\Release\net5.0\publish\</_PublishTargetUrl>
+    <History>True|2021-11-12T18:13:10.0210462Z;True|2021-11-12T15:12:54.8308416-03:00;True|2021-11-12T12:55:00.8030381-03:00;True|2021-11-12T12:54:50.9241018-03:00;True|2021-11-11T17:19:52.7999806-03:00;True|2021-11-11T17:19:43.0753487-03:00;True|2021-11-11T16:44:35.9585558-03:00;</History>
   </PropertyGroup>
 </Project>

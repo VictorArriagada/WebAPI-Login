@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\WebAPI Login\\WebAPIAutores\\WebAPIGSC.csproj": {}
+    "F:\\Proyecto Calle Larga\\WebAPI Login\\WebAPIAutores\\WebAPIGSC.csproj": {}
   },
   "projects": {
-    "F:\\WebAPI Login\\WebAPIAutores\\WebAPIGSC.csproj": {
+    "F:\\Proyecto Calle Larga\\WebAPI Login\\WebAPIAutores\\WebAPIGSC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\WebAPI Login\\WebAPIAutores\\WebAPIGSC.csproj",
+        "projectUniqueName": "F:\\Proyecto Calle Larga\\WebAPI Login\\WebAPIAutores\\WebAPIGSC.csproj",
         "projectName": "WebAPIGSC",
-        "projectPath": "F:\\WebAPI Login\\WebAPIAutores\\WebAPIGSC.csproj",
+        "projectPath": "F:\\Proyecto Calle Larga\\WebAPI Login\\WebAPIAutores\\WebAPIGSC.csproj",
         "packagesPath": "C:\\Users\\VITO\\.nuget\\packages\\",
-        "outputPath": "F:\\WebAPI Login\\WebAPIAutores\\obj\\",
+        "outputPath": "F:\\Proyecto Calle Larga\\WebAPI Login\\WebAPIAutores\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\VITO\\AppData\\Roaming\\NuGet\\NuGet.Config",

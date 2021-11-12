@@ -18,14 +18,13 @@ using WebAPIGSC.DTOs;
 namespace WebAPIGSC.Controllers.V1
 {
     [ApiController]
-    [Route("api/cuentas")]
+    [Route("api/[controller]")]
     public class CuentasController: ControllerBase
     {
         private readonly UserManager<IdentityUser> userManager;
         private readonly IConfiguration configuration;
         private readonly SignInManager<IdentityUser> signInManager;
-        private readonly IDataProtector dataProtector;
-
+    
         public CuentasController(UserManager<IdentityUser> userManager,
             IConfiguration configuration,
             SignInManager<IdentityUser> signInManager,
@@ -35,64 +34,52 @@ namespace WebAPIGSC.Controllers.V1
             this.userManager = userManager;
             this.configuration = configuration;
             this.signInManager = signInManager;
-            dataProtector = dataProtectionProvider.CreateProtector("213513467DFGASFDg4356234ASDGASDrtujadfhRATYasgh6342fgagFDHA");
         }
 
-        [HttpPost("registrar", Name = "registrarUsuario")] // api/cuentas/registrar
-        public async Task<ActionResult<RespuestaAutenticacion>> Registrar(CredencialesUsuario credencialesUsuario)
+        [HttpPost("registrar")] // api/cuentas/registrar
+        public async Task<ActionResult<RespuestaAutenticacion>> Registrar(string email,
+            string password)
         {
-            var usuario = new IdentityUser { UserName = credencialesUsuario.Email, 
-                Email = credencialesUsuario.Email };
-            var resultado = await userManager.CreateAsync(usuario, credencialesUsuario.Password);
+            var usuario = new IdentityUser { UserName = email, 
+                Email = email};
+            var resultado = await userManager.CreateAsync(usuario, password);
 
             if (resultado.Succeeded)
             {
-                return await ConstruirToken(credencialesUsuario);
+                return await ConstruirToken(email);
             }
             else
             {
                 return BadRequest(resultado.Errors);
-            }
+            }            
         }
 
-        [HttpPost("login", Name = "loginUsuario")]
-        public async Task<ActionResult<RespuestaAutenticacion>> Login(CredencialesUsuario credencialesUsuario)
+        [HttpPost("login")]
+        public async Task<ActionResult<RespuestaAutenticacion>> Login(string email,
+            string password)
         {
-            var resultado = await signInManager.PasswordSignInAsync(credencialesUsuario.Email,
-                credencialesUsuario.Password, isPersistent: false, lockoutOnFailure: false);
+            var resultado = await signInManager.PasswordSignInAsync(email,
+                password, isPersistent: false, lockoutOnFailure: false);
 
             if (resultado.Succeeded)
             {
-                return await ConstruirToken(credencialesUsuario);
+                
+                return await ConstruirToken(email);
             }
             else
             {
                 return BadRequest("Login incorrecto");
-            }
+            }            
         }
 
-        [HttpGet("RenovarToken", Name = "renovarToken")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<ActionResult<RespuestaAutenticacion>> Renovar()
-        {
-            var emailClaim = HttpContext.User.Claims.Where(claim => claim.Type == "email").FirstOrDefault();
-            var email = emailClaim.Value;
-            var credencialesUsuario = new CredencialesUsuario()
-            {
-                Email = email
-            };
-
-            return await ConstruirToken(credencialesUsuario);
-        }
-
-        private async Task<RespuestaAutenticacion> ConstruirToken(CredencialesUsuario credencialesUsuario)
+        private async Task<RespuestaAutenticacion> ConstruirToken(string email)
         {
             var claims = new List<Claim>()
             {
-                new Claim("email", credencialesUsuario.Email),
+                new Claim("email", email),
             };
 
-            var usuario = await userManager.FindByEmailAsync(credencialesUsuario.Email);
+            var usuario = await userManager.FindByEmailAsync(email);
             var claimsDB = await userManager.GetClaimsAsync(usuario);
 
             claims.AddRange(claimsDB);
@@ -116,19 +103,19 @@ namespace WebAPIGSC.Controllers.V1
             };
         }
 
-        [HttpPost("HacerAdmin", Name = "hacerAdmin")]
-        public async Task<ActionResult> HacerAdmin(EditarAdminDTO editarAdminDTO)
+        [HttpPost("HacerAdmin")]
+        public async Task<ActionResult> HacerAdmin(string email)
         {
-            var usuario = await userManager.FindByEmailAsync(editarAdminDTO.Email);
+            var usuario = await userManager.FindByEmailAsync(email);
             await userManager.AddClaimAsync(usuario, new Claim("admin", "1"));
             return NoContent();
         }
 
 
-        [HttpPost("RolCalleLarga", Name = "rolCalleLarga")]
-        public async Task<ActionResult> RolAdmin(EditarAdminDTO editarAdminDTO)
+        [HttpPost("RolCalleLarga")]
+        public async Task<ActionResult> RolAdmin(string email)
         {
-            var usuario = await userManager.FindByEmailAsync(editarAdminDTO.Email);
+            var usuario = await userManager.FindByEmailAsync(email);
             await userManager.AddClaimAsync(usuario, new Claim("Callelarga", "1"));
             return NoContent();
         }

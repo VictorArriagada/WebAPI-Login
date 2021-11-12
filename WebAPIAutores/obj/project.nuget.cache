@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VJnVBX+pL8plwPwukA1L5RNBZ5eWCvj/DczVfd6bC+4J0j+SH2HQLBGwugww2L9St9t1ZIcYNI8oeftEQ0fAmA==",
+  "dgSpecHash": "+QvxPjznnxaP511i1siToexek1RkqfTrdtQlt74h6TDm4h8svaitWbPUTs7jMa15GnDXDCbyF7QU8v7oXG16RQ==",
   "success": true,
-  "projectFilePath": "F:\\WebAPI Login\\WebAPIAutores\\WebAPIGSC.csproj",
+  "projectFilePath": "F:\\Proyecto Calle Larga\\WebAPI Login\\WebAPIAutores\\WebAPIGSC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\VITO\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\VITO\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

@@ -28,7 +28,7 @@ namespace WebAPIGSC
     {
         public Startup(IConfiguration configuration)
         {
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+            
             Configuration = configuration;
         }
 
@@ -89,8 +89,7 @@ namespace WebAPIGSC
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
-            app.UseLoguearRespuestaHTTP();
-
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
